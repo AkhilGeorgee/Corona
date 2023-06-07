@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Home</title>
+<link rel="stylesheet" href="#" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/all.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/sidemanu.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/index.css}" />
+</head>
+<body>
+
+	
+      <div class="header" style="background: white;">
+        <div class="side-nav">
+          <!-- <a href="@{/}" class="logo"> 
+          </a> -->
+         <h3 class="logo-h1">FilimBooking</h3>
+            <ul class="nave-links">
+           <li><a th:href="@{/home}"><i class="fas fa-home"></i>&nbsp;&nbsp;<p>Home</p></a></li>
+					<li><a th:href="@{/setting}"><i class="fas fa-cogs"></i>&nbsp;&nbsp;<p>Setting</p></a></li>
+					<li th:if="${session.user.cId==1}"><a th:classappend="${menu == 'allusers'} ? 'text-dark' : ' '" th:href="@{/all-customers-records}"><i class="fas fa-users"></i>&nbsp;&nbsp;<p>All Users</p></a></li>
+					<li><a th:href="@{/order-history}"><i
+							class="fas fa-history"></i>&nbsp;&nbsp;<p>Orders</p></a></li>
+					<li><a href="@{/aboutus}"><i class="fas fa-address-card"></i>&nbsp;&nbsp;<p>AboutUs</p></a></li>
+					<li><a href="@{/contactus}"><i class="fas fa-phone-square-alt"></i>&nbsp;&nbsp;<p>ContactUs</p></a></li>
+					<li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<p>Logout</p></a></li>
+                <div class="actives">
+
+                </div>
+            </ul>
+        </div>
+			<div class="col-9 history">
+				<div class="history-section">
+					<div class="history-head">
+						<p>
+							<span><i class="fas fa-user"></i></span>&nbsp;<span
+								class="name-user" th:if="${session.user.cName}"
+								th:text="${session.user.cName}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fas fa-envelope"></i>
+								<sup><i class="fas fa-sms"></i></sup></span>
+						</p>
+					</div>
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col" class="text-primary">Movie</th>
+								<th scope="col" class="text-primary">Seat</th>
+								<th scope="col" class="text-primary">Each Price</th>
+								<th scope="col" class="text-primary">Total price</th>
+								<th scope="col" class="text-primary">Booking Date</th>
+								<th scope="col" class="text-primary">Show on Date</th>
+								<th scope="col" class="text-primary">Show on Time</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="history: ${seatRecords}">
+								<th th:text="${history.movieName}"></th>
+								<th th:text="${history.seat}"></th>
+								<th th:text="${history.price}"></th>
+								<th th:text="${history.total}"></th>
+								<th th:text="${#dates.format(history.bookingDate, 'dd-MM-yyyy')}"></th>
+								<th th:text="${#dates.format(history.showDate, 'dd-MM-yyyy')}"
+									th:classappend="${(history.showDate eq #dates.createToday()) or (history.showDate.after(#dates.createNow())) ? 'active' : 'deactive'}"></th>
+								<th th:text="${history.showTime}"
+									th:classappend="${(history.showDate eq #dates.createToday()) or (history.showDate.after(#dates.createNow())) ? 'active' : 'deactive'}"></th>
+
+							</tr>
+
+
+						</tbody>
+					</table>
+
+
+
+				</div>
+			</div>
+		</div>
+
+	
+
+	
+</body>
+</html>

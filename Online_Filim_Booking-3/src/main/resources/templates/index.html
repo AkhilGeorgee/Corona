@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+       <meta charset="UTF-8" />
+        <title>Home</title>
+       <link rel="stylesheet" href="#" th:href="@{/css/bootstrap.css}" />
+       <link rel="stylesheet" href="#" th:href="@{/css/all.css}" />
+       <link rel="stylesheet" href="#" th:href="@{/css/sidemanu.css}" />
+       <link rel="stylesheet" href="#" th:href="@{/css/all.css}" />
+    </head>
+ <body>
+      <div class="header">
+        <div class="side-nav">
+          <!-- <a href="@{/}" class="logo"> 
+          </a> -->
+         <h3 class="logo-h1">FilimBooking</h3>
+            <ul class="nave-link">
+                <li><a th:classappend="${menu == 'home'}? 'text-dark' : ' '" href="@{/}"><i class="fas fa-home"></i>&nbsp;&nbsp;<p>Home</p></a></li>
+                <li><a th:href="@{/register}"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;<p>Register</p></a></li>
+                <li><a th:href="@{/loginForm}"><i class="fas fa-users"></i>&nbsp;&nbsp;<p>Login</p></a></li>
+                <li><a th:href="@{/aboutus}"><i class="fas fa-address-card"></i>&nbsp;&nbsp;<p>AboutUs</p></a></li>
+                <li><a th:href="@{/contactus}"><i class="fas fa-phone-square-alt"></i>&nbsp;&nbsp;<p>ContactUs</p></a></li>
+                <div class="actives">
+
+                </div>
+            </ul>
+        </div>
+        <div class="top-nav">
+            <div class="nav-right">
+                     
+                <form action="@{serching}" method="get">
+                                <div class="search-box">
+                    
+                
+                <input type="text" placeholder="scarch your movie..." required="required">
+                <button type="submit"><i class="fa fa-search"></i></button>
+                    
+                </div>
+                
+               </form>
+                   
+                
+                </div>
+                
+       </div>
+ <!-- ----------------------------------------------------------------------------------------------------------------->
+                             <!--movie booking images-->
+                
+                             <div class="before_main_section">
+                                <div class="card-section" th:each="movies : ${movieList}" style="background-color: aliceblue;">
+                                    <form action="@{/booking}" method="get">
+                                        <img th:src="@{${'images/'+movies.image}}" height="280px" alt="" />
+                                        <div class="card_body mt-1">
+                                            
+                                            <button class="btn btn-primary" type="submit" name="movieName" value="${movies.movieName}">Book now</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-section" style="background-color: aliceblue;">
+                                    <form action="@{/booking}" method="get">
+                                        <img src="images/backgroung poster.jpeg" alt="" />
+                                        <div class="card_body">
+                                            <h5>Title</h5>
+                                            <button class="btn btn-primary" type="submit" name="movieName" value="akhil">Book now</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-section" style="background-color: aliceblue;">
+                                    <form action="@{/booking}" method="get">
+                                        <img src="images/backgroung poster.jpeg" alt="" />
+                                        <div class="card_body">
+                                            <h5>Title</h5>
+                                            <button class="btn btn-primary" type="submit" name="mName" value="akhil">Book now</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-section" style="background-color: aliceblue;">
+                                    <form action="@{/booking}" method="get">
+                                        <img src="images/backgroung poster.jpeg" alt="" />
+                                        <div class="card_body">
+                                            <h5>Title</h5>
+                                            <button class="btn btn-primary" type="submit" name="mName" value="akhil">Book now</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-section" style="background-color: aliceblue;">
+                                    <form action="@{/booking}" method="get">
+                                        <img src="images/backgroung poster.jpeg" alt="" />
+                                        <div class="card_body">
+                                            <h5>Title</h5>
+                                            <button class="btn btn-primary" type="submit" name="mName" value="akhil">Book now</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-section" style="background-color: aliceblue;">
+                                    <form action="@{/booking}" method="get">
+                                        <img src="images/backgroung poster.jpeg" alt="" />
+                                        <div class="card_body">
+                                            <h5>Title</h5>
+                                            <button class="btn btn-primary" type="submit" name="mName" value="akhil">Book now</button>
+                                        </div>
+                                    </form>
+                                </div> 
+                                <div class="card-section" style="background-color: aliceblue;">
+                                    <form action="@{/booking}" method="get">
+                                        <img src="images/backgroung poster.jpeg" alt="" />
+                                        <div class="card_body">
+                                            <h5>Title</h5>
+                                            <button class="btn btn-primary" type="submit" name="mName" value="akhil">Book now</button>
+                                        </div>
+                                    </form>
+                                </div> 
+                                <div class="card-section" style="background-color: aliceblue;">
+                                    <form action="@{/booking}" method="get">
+                                        <img src="images/backgroung poster.jpeg" alt="" />
+                                        <div class="card_body">
+                                            <h5>Title</h5>
+                                            <button class="btn btn-primary" type="submit" name="mName" value="akhil">Book now</button>
+                                        </div>
+                                    </form>
+                                </div> 
+                                
+                                
+                            </div>
+      </div>  
+
+    </body>
+</html>
